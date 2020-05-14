@@ -6,6 +6,10 @@ from xray_classification.settings import img_size_cl as img_size
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 
+def index():
+
+    return('Success')
+
 @csrf_exempt
 def classify_api(request):
     data = {"success": False}
