@@ -1,0 +1,1 @@
+{"batch_size": 64, "optimizer": "SGD", "lr": 0.01, "weight_decay": 0.0001, "momentum": 0.9, "epochs": 10, "imgsize": [224, 224], "arch": "resnet50", "finetune": false, "path": null, "feature_extract": false, "version": "1"}
