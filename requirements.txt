@@ -11,7 +11,7 @@ openpyxl==3.0.0
 packaging==19.2
 pandas==0.25.1
 pandocfilters==1.4.2
-Pillow==6.2.0
+Pillow
 ply==3.11
 qrcode==6.1
 redis==3.5.0
