@@ -19,7 +19,6 @@ from . import views, settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-    path('/', views.index, name='index'),
     path('predict/', views.classify_api, name='predict'),
     path('admin/', admin.site.urls),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
