@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 
 import os
 
+# import django_heroku
+
 from xray_classification.scripts import *
 
 
@@ -23,13 +25,13 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-# SECRET_KEY = '0_6j=*xhg%vhn!+2gz$r430u90!x1zs&oi5&no5czln&jkb6i^'
-SECRET_KEY = os.environ.get('SECRET_KEY')
+SECRET_KEY = '0_6j=*xhg%vhn!+2gz$r430u90!x1zs&oi5&no5czln&jkb6i^'
+# SECRET_KEY = os.environ.get('SECRET_KEY', '0_6j=*xhg%vhn!+2gz$r430u90!x1zs&oi5&no5czln&jkb6i^')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['https://xray-classification-production.herokuapp.com', '127.0.0.1']
+ALLOWED_HOSTS = ['fmi-xray-classification.herokuapp.com', '127.0.0.1', '*']
 
 
 # Application definition
@@ -47,6 +49,9 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+
+    'whitenoise.middleware.WhiteNoiseMiddleware',
+    
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -126,6 +131,7 @@ MODEL_CL, img_size_cl = load_model(MODEL_CL_PATH)
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
 STATIC_URL = '/static/'
 
 # Extra places for collectstatic to find static files.
@@ -134,4 +140,5 @@ STATICFILES_DIRS = (
 )
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
 MEDIA_URL = 'media/'
