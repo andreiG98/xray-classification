@@ -75,17 +75,17 @@ class NetworkV1(nn.Module):
 
 def construct_model(config, num_classes):
     if config['arch'] == 'resnext50':
-        base = torchvision.models.resnext50_32x4d(pretrained=True)
+        base = torchvision.models.resnext50_32x4d(pretrained=False)
     elif config['arch'] == 'resnet34':
-        base = torchvision.models.resnet34(pretrained=True)
+        base = torchvision.models.resnet34(pretrained=False)
     elif config['arch'] == 'resnet50':
-        base = torchvision.models.resnet50(pretrained=True)
+        base = torchvision.models.resnet50(pretrained=False)
     elif config['arch'] == 'mobilenetv2':
-        base = torchvision.models.mobilenet_v2(pretrained=True)
+        base = torchvision.models.mobilenet_v2(pretrained=False)
     elif config['arch'] == 'vgg19':
-        base = torchvision.models.vgg19(pretrained=True)
+        base = torchvision.models.vgg19(pretrained=False)
     elif config['arch'] == 'densenet121':
-        base = torchvision.models.densenet121(pretrained=True)
+        base = torchvision.models.densenet121(pretrained=False)
     else:
         print("Invalid model name, exiting...")
         exit()
@@ -137,6 +137,11 @@ def load_model(path):
         
     best_path = os.path.join(path, 'best.pth')
     checkpoint = torch.load(best_path)
+
+    # best_url = 'https://drive.google.com/file/d/1-f13ftoga1ZWy49N9gMdh_3IeYkR4r7t/edit'
+    # # checkpoint = torch.utils.model_zoo.load_url(url=best_url, map_location=device, progress=True)
+    # checkpoint = torch.hub.load_state_dict_from_url(url=best_url, map_location=device, progress=True)
+    
     model_state_dict = checkpoint['model']
 
     num_classes = len(CATEGORY_NAMES)
