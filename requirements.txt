@@ -12,6 +12,7 @@ openpyxl==3.0.0
 packaging==19.2
 pandas==0.25.1
 pandocfilters==1.4.2
+pickleshare==0.7.5
 Pillow==6.2.2
 ply==3.11
 pytz==2019.3
